@@ -20,7 +20,7 @@
 		</span>
 	</div>
 
-<div ng-repeat="data in datas| filter:myFilter">
+	<div ng-repeat="data in datas| filter:myFilter">
 		<input type="text" ng-model="data.title"/>
 		<input type="text" ng-model="data.left"/>
 		<input type="text" ng-model="data.top"/>
@@ -31,38 +31,37 @@
 
 <script>
 	function displayController($scope, $timeout) {
-
-$scope.animateIn = function(id,t){
-		console.log("button pressed");
-  $(".div").animate({
-    left:'45%',
-    top: '45%',
-    opacity:'0',
-    height:'0px',
-    width:'0px'
-  },t);
-  $timeout(function(){
-  	$scope.myFilter = {dad : id};
-  },t);
-  $timeout($scope.animateOut,t); 
-}
-
-
-$scope.animateOut = function(){
+		$scope.animateIn = function(id,t){
 			console.log("button pressed");
-		var d= document.getElementsByClassName("div");
-		for(i=0;i<d.length;i++){
-  $("#"+d[i].id).animate({
-    left: d[i].getAttribute("data-left")+"%",
-    top:  d[i].getAttribute("data-top")+"%",
-    opacity:'1',
-    height:'100px',
-    width:'100px'
-  },500);
-}
-}
+  			$(".div").animate({
+				left:'45%',
+				top: '45%',
+			    opacity:'0',
+			    height:'0px',
+			    width:'0px'
+			},t);
+			$timeout(function(){
+			  	$scope.myFilter = {dad : id};
+			},t);
+			$timeout($scope.animateOut,t); 
+		}
 
-$scope.datas = [
+
+		$scope.animateOut = function(){
+			console.log("button pressed");
+			var d= document.getElementsByClassName("div");
+			for(i=0;i<d.length;i++){
+  				$("#"+d[i].id).animate({
+				    left: d[i].getAttribute("data-left")+"%",
+				    top:  d[i].getAttribute("data-top")+"%",
+				    opacity:'1',
+				    height:'100px',
+				    width:'100px'
+				},500);
+			}
+		}
+
+		$scope.datas = [
 			{title:'official',left:'45',top:'25',id:'0',dad:'-1'},
 			{title:'resume',left:'25',top:'25',id:'1',dad:'-1'},
 			{title:'Gpa',left:'35',top:'45',id:'2',dad:'0'},
@@ -79,9 +78,8 @@ $scope.datas = [
 			{title:'basketball',left:'45',top:'80',id:'13',dad:'3'},
 
 		];
-$scope.animateIn(-1,0);
-}
-
+		$scope.animateIn(-1,0);
+	}
 </script>
 </body>
 </html>
