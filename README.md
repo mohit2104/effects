@@ -1,0 +1,4 @@
+effects
+=======
+
+various functional effects
